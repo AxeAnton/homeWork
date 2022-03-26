@@ -7,11 +7,32 @@ public class Food {
     private int foodCarbohydrates;
     private int foodCalories;
 
-    public Food(int foodProtein, String foodName, int foodFat, int foodCarbohydrates, int foodCalories) {
-        setFoodCalories(foodCalories);
+    public Food(String foodName) {
         setFoodName(foodName);
+    }
+
+    public Food(String foodName, int foodFat) {
         setFoodFat(foodFat);
+        setFoodName(foodName);
+    }
+    public Food(String foodName, int foodFat,int foodCarbohydrates) {
+        setFoodFat(foodFat);
+        setFoodName(foodName);
         setFoodCarbohydrates(foodCarbohydrates);
+    }
+
+    public Food(String foodName, int foodFat,int foodCarbohydrates, int foodCalories) {
+        setFoodFat(foodFat);
+        setFoodName(foodName);
+        setFoodCarbohydrates(foodCarbohydrates);
+        setFoodCalories(foodCalories);
+    }
+
+    public Food(String foodName, int foodFat,int foodCarbohydrates, int foodCalories, int foodProtein) {
+        setFoodFat(foodFat);
+        setFoodName(foodName);
+        setFoodCarbohydrates(foodCarbohydrates);
+        setFoodCalories(foodCalories);
         setFoodProtein(foodProtein);
     }
 
@@ -25,7 +46,7 @@ public class Food {
 
     public int getFoodProtein() {return foodProtein;}
     public void setFoodProtein(int foodProtein) {
-        if (foodProtein <= 0) {
+        if (foodProtein < 0) {
             throw new IllegalArgumentException("нб менее 0");
         }
         this.foodProtein = foodProtein;
@@ -40,7 +61,7 @@ public class Food {
 
     public int getFoodCarbohydrates() {return foodCarbohydrates;}
     public void setFoodCarbohydrates(int foodCarbohydrates) {
-        if (foodCarbohydrates <= 0) {
+        if (foodCarbohydrates < 0) {
             throw new IllegalArgumentException("нб менее 0");
         }
         this.foodCarbohydrates = foodCarbohydrates;
@@ -48,7 +69,7 @@ public class Food {
 
     public int getFoodCalories() {return foodCalories;}
     public void setFoodCalories(int foodCalories) {
-        if (foodCalories <= 0) {
+        if (foodCalories < 0) {
             throw new IllegalArgumentException("нб менее 0");
         }
         this.foodCalories = foodCalories;
