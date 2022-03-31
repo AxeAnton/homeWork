@@ -12,6 +12,8 @@ public class Applitation {
         Group group2 = new Group(mountain1, true, 2);
 
 
+
+
         Climber climber1 = new Climber("Антон", "Россия");
         Climber climber2 = new Climber("Иван", "Россия");
         Climber climber3 = new Climber("Петя", "Россия");
