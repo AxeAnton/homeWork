@@ -8,10 +8,10 @@ public interface Command {
         if (comandText.equalsIgnoreCase("1")) {
             return () -> {
 
-            }
+            };
         }
 
-    };
-
+        return null;
+    }
 
 }
