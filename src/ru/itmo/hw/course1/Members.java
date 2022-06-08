@@ -7,6 +7,8 @@ import java.util.Date;
 
 public class Members {
 
+
+
     private String name;
     private String surName;
     private LocalDate birthYear;
@@ -14,25 +16,14 @@ public class Members {
     public Members(String name, String surName, LocalDate birthYear) {
         this.name = name;
         this.surName = surName;
-        this.birthYear = birthYear;
+        setBirthYear(birthYear);
     }
 
     public LocalDate getBirthYear() {return birthYear;}
+
     public void setBirthYear(LocalDate birthYear) {
-
-
-
-/*
-        if (birthYear > 1942 && birthYear < 2004)
-            throw new IllegalArgumentException("Не верный ввод, ввидите год рождения длиной четыре цыфры");
-
-        String strBirthYear = Integer.toString(birthYear);
-*/
-
-//        LocalDate parsStrBirthYear = LocalDate.parse(strBirthYear);
         if (birthYear.plusYears(18).isBefore(LocalDate.now()) && birthYear.plusYears(60).isAfter(LocalDate.now()))
             throw new IllegalArgumentException("Слишком молод, вход запрещен");
-
             this.birthYear = birthYear;
     }
 
@@ -53,4 +44,6 @@ public class Members {
 
     }
 
+    public void getFromValidTime(Type daily) {
+    }
 }

@@ -25,7 +25,8 @@ public class MyFood {
                 }
                 foodList[i] = food;
             }
-        System.out.println("list is full");
+            System.out.println("list is full");
+        }
     }
         public void printFoodListNames(){
             for (Food foodlist: foodList) {
@@ -34,8 +35,4 @@ public class MyFood {
                 }
             }
         }
-
-
     }
-
-}

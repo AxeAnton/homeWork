@@ -12,6 +12,7 @@ public class SimpleMessage implements Serializable {
     public LocalDateTime getDateTime() {
         return dateTime;
     }
+
     public SimpleMessage(String sender, String text) {
         this.sender = sender;
         this.text = text;

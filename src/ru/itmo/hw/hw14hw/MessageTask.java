@@ -1,4 +1,4 @@
-package ru.itmo.hw.hw14;
+package ru.itmo.hw.hw14hw;
 
 import java.util.*;
 
@@ -49,6 +49,9 @@ public class MessageTask {
         // TODO: удалить из коллекции каждое сообщение с заданным приоритетом
         //  вывод в консоль до удаления и после удаления
     }
+
+
+
 
     public static void removeOther(List<Message> messageList, MessagePriority priority) {
         // TODO: удалить из коллекции все сообщения, кроме тех, которые имеют заданный приоритет

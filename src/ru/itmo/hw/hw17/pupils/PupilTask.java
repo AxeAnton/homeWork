@@ -1,14 +1,14 @@
 package ru.itmo.hw.hw17.pupils;
 
 import java.time.LocalDate;
-import java.time.Period;
 import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class PupilTask {
     public static void main(String[] args) {
 
-
+        // Используя Stream API:
         List<Pupil> pupils = new ArrayList<>(Arrays.asList(
                 new Pupil(1, "Женя", Pupil.Gender.MALE, LocalDate.now().minusYears(10)),
                 new Pupil(2, "Олег", Pupil.Gender.MALE, LocalDate.now().minusYears(7)),
@@ -24,45 +24,66 @@ public class PupilTask {
                 new Pupil(12, "Ирина", Pupil.Gender.FEMALE, LocalDate.now().minusYears(6))
         ));
 
-        // TODO: Используя Stream API:
-        //  1. Разделить учеников на две группы: мальчиков и девочек. Результат: Map<Pupil.Gender, ArrayList<Pupil>>
-        //  2. Найти средний возраст учеников
-        //  3. Найти самого младшего ученика
-        //  4. Найти самого старшего ученика
-        //  5. Собрать учеников в группы по году рождения
-        //  6. Убрать учеников с одинаковыми именами, имена и дату рождения оставшихся вывести в консоль
-        //  7. Отсортировать по полу, потом по дате рождения, потом по имени (в обратном порядке), собрать в список (List)
-        //  8. Вывести в консоль всех учеников в возрасте от N до M лет
-        //  9. Собрать в список всех учеников с именем=someName
-        //  10. Собрать Map<Pupil.Gender, Integer>, где Pupil.Gender - пол, Integer - суммарный возраст учеников данного пола
+        // 1. Разделить учеников на две группы: мальчиков и девочек. Результат: Map<Pupil.Gender, ArrayList<Pupil>>
+        Map<Pupil.Gender, ArrayList<Pupil>> byGender = pupils.stream()
+                .collect(Collectors.groupingBy(Pupil::getGender, Collectors.toCollection(ArrayList::new)));
 
-    
-            // 1. Решение
-            Map<Pupil.Gender, ArrayList<Pupil>> pupilsArraySeparate = pupils.stream()
-                       .collect(Collectors.groupingBy(
-                              Pupil::getGender, Collectors.toCollection(ArrayList::new)));
-            System.out.println(pupilsArraySeparate);
+        // 2. Найти средний возраст учеников
+        double avgAge = pupils.stream()
+                .mapToInt(pupil -> LocalDate.now().getYear() - pupil.getBirth().getYear())
+                .average().orElse(0);
+        System.out.println(avgAge);
 
+        // 3. Найти самого младшего ученика
+        Pupil minAge = pupils.stream().max(Comparator.comparing(Pupil::getBirth)).orElse(null);
+        System.out.println(minAge);
 
-            // 2. Решение
-            double aveAge = pupils.stream()
-                .mapToInt(elem->LocalDate.now().getYear() - elem.getBirth().getYear())
-                .average()
-                .getAsDouble();
-            System.out.println("Средний возраст студентов " + aveAge);
+        // 4. Найти самого старшего ученика
+        Pupil maxAge = pupils.stream().min(Comparator.comparing(Pupil::getBirth)).orElse(null);
+        System.out.println(maxAge);
 
+        // 5. Собрать учеников в группы по году рождения
+        Map<Integer, List<Pupil>> byBirth = pupils.stream()
+                .collect(Collectors.groupingBy(pupil -> pupil.getBirth().getYear()));
+        System.out.println(byBirth);
 
-/*
-            // 3. Решение
-            Optional<Pupil> youngPupil = pupils.stream()
-                .mapToInt(elem->LocalDate.now().getYear() - elem.getBirth().getYear())
-                .min(Comparator.comparing(elem -> (int) elem.getBirth().getYear(), LocalDate.now()).getYears());
-            System.out.println("Средний возраст студентов " + youngPupil);
+        // 6. Убрать учеников с одинаковыми именами, имена и дату рождения оставшихся вывести в консоль
+        Collection<Pupil> uniqueByName = pupils.stream()
+                .collect(Collectors.toMap(
+                        Pupil::getName,
+                        Function.identity(),
+                        ((pupil, pupil2) -> pupil)
+                )).values();
+        uniqueByName.forEach(pupil -> System.out.println(pupil.getName() + ": " + pupil.getBirth()));
 
-*/
+        // 7. Отсортировать по полу, потом по дате рождения, потом по имени (в обратном порядке), собрать в список (List)
+        pupils.sort(
+                Comparator.comparing(Pupil::getGender)
+                        .thenComparing(Pupil::getBirth)
+                        .thenComparing(Pupil::getName).reversed()
+        );
+        System.out.println(pupils);
 
+        // 8. Вывести в консоль всех учеников в возрасте от N до M лет
+        int from = 10;
+        int to = 10;
+        pupils.forEach(
+                pupil -> {
+                    if (pupil.getBirth().getYear() > to && pupil.getBirth().getYear() < from) {
+                        System.out.println(pupil);
+                    }
+                }
+        );
 
+        // 9. Собрать в список всех учеников с именем=someName
+        List<Pupil> pupilsByName = pupils.stream()
+                .filter(pupil -> pupil.getName().equals("Петр"))
+                .collect(Collectors.toList());
 
-
+        // 10. Собрать Map<Pupil.Gender, Integer>, где Pupil.Gender - пол, Integer - суммарный возраст учеников данного пола
+        Map<Pupil.Gender, Integer> genderCount = pupils.stream()
+                .collect(Collectors.groupingBy(Pupil::getGender,
+                        Collectors.summingInt(pupil -> LocalDate.now().getYear() - pupil.getBirth().getYear())));
+        System.out.println(genderCount);
     }
 }

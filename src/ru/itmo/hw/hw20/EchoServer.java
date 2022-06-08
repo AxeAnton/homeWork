@@ -20,26 +20,25 @@ public class EchoServer {
                 Socket socket = serverSocket.accept(); // приходит клиент, вызывается метод устанавливаия соеденения между клиентом и сервером
                 connection = new Connection(socket);
                 SimpleMessage message = connection.readMessage();
-// FIXME почему то с++ не срабатывает!
-/*                int c = 0;
-                if (message.getText() != null) {
-                    c++;
-                    return;
-                }
-                else if (message.getText().equalsIgnoreCase("ping")) {
-                    String tc = "number of connection " + c;
+                c++;
+                if (message.getText().equalsIgnoreCase("count")) {
                     connection.sendMessage(SimpleMessage
-                            .getMessage("server", tc));
+                            .getMessage("server", "count = "+ c));
                 }
-*/
+
                 if (message.getText().equalsIgnoreCase("help")) {
-                    connection.sendMessage(SimpleMessage.getMessage("server", "Help, Count, Ping, Exit")); // формирует свое сообщение и отправляет обратно
+                    connection.sendMessage(SimpleMessage
+                            .getMessage("server", "Help, Count, Ping, Exit")); // формирует свое сообщение и отправляет обратно
                 }
-                else if (message.getText().equalsIgnoreCase("ping")) { // заготовка пока пустая
+/*                else if (message.getText().equalsIgnoreCase("ping")) {
+                    connection.sendMessage(SimpleMessage
+                            .getMessage("server", "ping = "));
 
                 }
+*/
                 else {
-                    connection.sendMessage(SimpleMessage.getMessage("server", "invalid order"));
+                    connection.sendMessage(SimpleMessage
+                            .getMessage("server", "invalid order"));
                 }
 
                 //printMessage(connection.readMessage()); // серверная сторона читает сообщения от клиента

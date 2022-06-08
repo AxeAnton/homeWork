@@ -1,9 +1,5 @@
 package ru.itmo.hw.course1v3;
 
-import ru.itmo.hw.course1v2.Abonement;
-import ru.itmo.hw.course1v2.AbonementType;
-import ru.itmo.hw.course1v2.Member;
-
 import java.time.LocalDate;
 
 public class Owner {

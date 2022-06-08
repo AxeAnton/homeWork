@@ -1,4 +1,4 @@
-package ru.itmo.hw.hw14;
+package ru.itmo.hw.hw14hw;
 
 import java.util.List;
 

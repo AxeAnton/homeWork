@@ -1,4 +1,4 @@
-package ru.itmo.hw.hw14;
+package ru.itmo.hw.hw14hw;
 
 // Создать список объектов List<Employee> (использовать метод employeeGenerator)
 // и сортировать по:
@@ -7,9 +7,7 @@ package ru.itmo.hw.hw14;
 // имени, зарплате, возрасту и компании
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
-import java.util.TreeSet;
 
 public class Employee<num, ComparatorEmployee> {
 

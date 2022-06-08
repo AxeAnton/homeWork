@@ -4,18 +4,53 @@ import ru.itmo.hw.course1v2.AbonementType;
 import ru.itmo.hw.course1v2.Member;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
+
+import static ru.itmo.hw.course1v3.Zone.SWIMINGPOOL;
 
 public class App {
     public static void main(String[] args) {
         Fitness fitness = new Fitness();
 
 /*
-        private static Owner[] generateOwner(int 21){
-            Owner[] owners = new Owner[21];
-            for (int i = 0; i < 21; i++) {
+
+    // фабричные методы
+    public static BattleUnit getBattleUnit(){
+        String[] types = {"knight", "infantry"};
+        BattleUnit unit = null;
+        int randomIndex = (int) (Math.random() * types.length);
+        switch (types[randomIndex]) {
+            case "knight":
+                unit = new Knight(30, 18);
+                break;
+            case "infantry":
+                unit = new Infantry(35, 20);
+                break;
+        }
+        return unit;
+    }
+
+    public static BattleUnit[] getBattleUnits(int count) {
+        BattleUnit[] units = new BattleUnit[count];
+        for (int i = 0; i < units.length; i++) {
+            // в статических методах можно обратиться
+            // только к статическим методам или свойствам
+            units[i] = getBattleUnit();
+        }
+        return units;
+    }
+
+*/
+
+   /*     private static Owner[] generateOwners(int n){
+            Owner[] owners = new Owner[n];
+            for (int i = 0; i < n; i++) {
                 if (owners == null)
-                Owner owner = new Owner("name" + i, "surname" + i, "1987-09-10" + 1),
-                               owners[i] = owner;
+                Owner owner = new Owner[("name" + i, "surname" + i, "1987-09-10" + 1)];
+
+
+            Type type = new Type(Zone[]{Zone.SWIMINGPOOL,Zone.GYM}, LocalTime.of(8, 0), LocalTime.of(22, 0);
+//                               owners[i] = owner;
             }
             return owners;
         }
@@ -44,9 +79,9 @@ public class App {
 //        Owner owner20 = new Owner("Нелли","тест","1990-10-28");
 //        Owner owner21 = new Owner("АБОНА","тест","1990-10-28");
 
-        Abonement abonement1 = new Abonement(owner1,Type.ONEDAY,new Zone[]{Zone.SWIMINGPOOL,Zone.GYM});
-        Abonement abonement2 = new Abonement(owner2,Type.ONEDAY,new Zone[]{Zone.SWIMINGPOOL,Zone.GYM});
-        Abonement abonement3 = new Abonement(owner3,Type.ONEDAY,new Zone[]{Zone.SWIMINGPOOL,Zone.GYM});
+        Abonement abonement1 = new Abonement(owner1,Type.ONEDAY,new Zone[]{SWIMINGPOOL,Zone.GYM});
+        Abonement abonement2 = new Abonement(owner2,Type.ONEDAY,new Zone[]{SWIMINGPOOL,Zone.GYM});
+        Abonement abonement3 = new Abonement(owner3,Type.ONEDAY,new Zone[]{SWIMINGPOOL,Zone.GYM});
 ///       Abonement abonement4 = new Abonement(owner4, Type.FULLDAY, new Zone[]{Zone.GROUPSLESSONS,Zone.GYM,Zone.SWIMINGPOOL});
 //        Abonement abonement5 = new Abonement(owner5, Type.FULLDAY, new Zone[]{Zone.GROUPSLESSONS,Zone.GYM,Zone.SWIMINGPOOL});
 //        Abonement abonement6 = new Abonement(owner6, Type.FULLDAY, new Zone[]{Zone.GROUPSLESSONS,Zone.GYM,Zone.SWIMINGPOOL});
@@ -67,7 +102,7 @@ public class App {
 //        Abonement abonement21 = new Abonement(owner21, Type.FULLDAY, new Zone[]{Zone.GROUPSLESSONS,Zone.GYM,Zone.SWIMINGPOOL});
 
         fitness.visitToFitnes(abonement1,Zone.GYM);
-        fitness.visitToFitnes(abonement2,Zone.SWIMINGPOOL);
+        fitness.visitToFitnes(abonement2, SWIMINGPOOL);
         fitness.visitToFitnes(abonement3,Zone.GROUPSLESSONS);
 //        fitness.visitToFitnes(abonement4, Zone.GYM);
 //        fitness.visitToFitnes(abonement5, Zone.GYM);

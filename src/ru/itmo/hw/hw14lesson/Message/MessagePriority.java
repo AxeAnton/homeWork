@@ -1,5 +1,4 @@
-package ru.itmo.hw.hw14;
-
+package ru.itmo.hw.hw14lesson.Message;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -86,7 +85,7 @@ class MessageGenerator {
         Random random = new Random();
         List<Message> messages = new ArrayList<>(num);
 
-//        values() - РІРµСЂРЅРµС‚ РјР°СЃСЃРёРІ РєРѕРЅСЃС‚Р°РЅС‚
+//        values() - вернет массив констант
         int typesCount = MessagePriority.values().length;
 
         for (int i = 0; i < num; i++){

@@ -18,4 +18,10 @@ public enum Type {
         this.openHour = openHour;
         this.clouseHour = clouseHour;
     }
+
+
+
+
+
+
 }

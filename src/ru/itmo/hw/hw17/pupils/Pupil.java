@@ -1,8 +1,6 @@
 package ru.itmo.hw.hw17.pupils;
 
 import java.time.LocalDate;
-import java.time.Period;
-import java.time.temporal.TemporalAmount;
 import java.util.Objects;
 
 public class Pupil {
@@ -24,9 +22,7 @@ public class Pupil {
         this.birth = birth;
     }
 
-    public int getNumber() {
-        return number;
-    }
+    public int getNumber() {return number;}
 
     public void setNumber(int number) {
         this.number = number;

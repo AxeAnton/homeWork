@@ -43,6 +43,6 @@ public class Application {
         myFood.addFood(food3);
         myFood.addFood(food4);
 
-        myFood.printFoodListName();
+        myFood.printFoodListNames();
     }
 }
