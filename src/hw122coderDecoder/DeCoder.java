@@ -1,4 +1,4 @@
-package hw122;
+package hw122coderDecoder;
 
 import java.io.FilterInputStream;
 import java.io.IOException;

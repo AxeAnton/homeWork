@@ -1,8 +1,7 @@
-package hw122;
+package hw122coderDecoder;
 
 
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 
 public class Coder extends FilterOutputStream {
     private String key;
