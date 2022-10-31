@@ -1,6 +1,4 @@
-package ru.itmo.hw.hw17.transactions;
-
-import java.util.Objects;
+package hw117StAPI.transactions;
 
 public class Account {
     private String number;

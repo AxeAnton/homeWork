@@ -1,18 +1,16 @@
-package ru.itmo.hw.hw17.pupils;
+package hw117StAPI.pupil;
+
 
 import java.time.LocalDate;
 import java.util.Objects;
 
 public class Pupil {
-    enum Gender {
+    static enum Gender { //так как все перечисления и так static, то подписывать класс не надо. Если перечесление маленькое, то его можно вложить в обычный класс Pupil в даннос случаи
         MALE, FEMALE
     }
     private int number; // уникальное значение для каждого ученика
     private String name;
     private Gender gender;
-
-
-
     private LocalDate birth;
 
     public Pupil(int number, String name, Gender gender, LocalDate birth) {
@@ -32,12 +30,12 @@ public class Pupil {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public Gender getGender() {
         return gender;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public void setGender(Gender gender) {

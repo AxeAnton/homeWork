@@ -16,7 +16,7 @@ public class MapTask {
 
         String city = "Тверь";
 
-        System.out.println(getLoginsByCity(firstTaskMap, city));
+
 
 
         // TODO:: дан список слов (words).
@@ -36,9 +36,6 @@ public class MapTask {
         words.add("august");
         words.add("august");
 
-        System.out.println(getMonthsCount(words));
-
-
         // TODO:: дана мапа (customerMap).
         //  Написать метод, который принимает на вход агрументы int from и int to и возвращает
         //  новую мапу, в которую войдут все покупатели,
@@ -50,14 +47,12 @@ public class MapTask {
         customerMap.put("3", new Customer("Максим", "3", 48));
         customerMap.put("4", new Customer("Евгения", "4", 67));
 
-        System.out.println(filterByAge(customerMap, 18, 35));
-
         // TODO:: Задания по тексту (text). На каждый пункт - минимум один метод:
         //  1. написать метод, принимающий на вход слово и возвращающий частоту встречаемости данного слова в тексте
         //  2. написать метод, который собирает все слова в группы
         //  по количеству букв:
         //  например, в одну группу попадут слова: 3 - [the, war, jar, get, met...], в другую 2 - [on, up, no, of...]
-        //  4. написать метод, который выводит в консоль топ 10 самых частых слов
+        //  3. написать метод, который выводит в консоль топ 10 самых частых слов
 
         // в тексте содержатся только буквы и пробельные символы
         String text = "It is a uncover long established fact that a reader will be distracted uncover by the readable content of a page " +
@@ -66,12 +61,6 @@ public class MapTask {
                 "packages and web page editors now use Lorem Ipsum as their default model text and a search for lorem ipsum will " +
                 "uncover many web sites still uncover in their infancy Various versions uncover have evolved over the years uncover sometimes by accident" +
                 " sometimes on purpose injected humour and the like";
-
-        System.out.println(wordCount(text, "uncover"));
-
-        System.out.println(getGroupsByLettersCount(text));
-
-        printTopTen(text);
 
     }
 

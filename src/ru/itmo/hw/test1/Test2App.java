@@ -1,5 +1,7 @@
 package ru.itmo.hw.test1;
 
+import java.util.Locale;
+
 public class Test2App {
     public static void main(String[] args) {
 
@@ -57,7 +59,22 @@ public class Test2App {
         System.out.println(str16.repeat(5)); // res - пусто и так же будет если в аргументе (0)
 
         //FIXME Метод substring(int beginIndex)
+        // уберает указанное в аргументе количество символов.
+        String str17 = "hello boy";
+         System.out.println(str17.substring(4)); // res - o boy
+        System.out.println(str17.substring(2)); // res  - llo boy
 
+        //FIXME Метод toLowerCase / toUpperCase
+        // переводит все в нижний или верхний регистр.
+        String str19 = "hELLo bOy";
+        System.out.println(str19.toLowerCase(Locale.ROOT)); // res - hello boy
+        System.out.println(str19.toUpperCase(Locale.ROOT)); // res  - HELLO BOY
+
+        //FIXME Метод trim
+        // удаляет начальные и конечный пробел.
+        String str18 = " hELLo bOy ";
+        System.out.println(str18); // res - _hELLo bOy_
+        System.out.println(str18.trim()); // res - [нет пробдела]hELLo bOy[нет пробдела]
 
 
     }

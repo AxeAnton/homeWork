@@ -1,8 +1,5 @@
-package ru.itmo.hw.hw17.transactions;
+package hw117StAPI.transactions;
 
-
-import java.lang.reflect.Array;
-import java.util.Arrays;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -30,68 +27,15 @@ public class TransactionsTask {
         //  где String - номер (number) аккаунта, Long - сумма транзакций (sum) по аккаунту - результат мапа
         // TODO: 2. найти сумму транзакций по всем аккаунтпм.- результат целое число
 
-/*
-Не работает
-        Map<String, Long> idSum = transactionStream.collect(
-                Collectors.groupingBy(Account::getNumber, Collectors.summingLong(Transaction::getSum)));
-*/
-
-/*
-Не работает
-        Map<String, Long> idSum = transactionStream.collect(
-                Collectors.toMap(Collectors.groupingBy(Transaction::getAccount), Collectors.summingLong(Transaction::getSum), (x, x1) -> x));
-*/
 
         Map<String, Long> idSum = transactionStream.collect(Collectors.toMap(transaction -> transaction.getAccount().getNumber(), Transaction::getSum, (x, x1) -> x + x1));
         System.out.println(idSum);
 
-
-/*
-        // не мой
-        double transactionsSum = transactionStream
-                .mapToLong(transaction -> transaction.getAccount().getBalance())
-                .average().orElse(0);
-        System.out.println(transactionsSum);
-*/
-
         // мой - работает когда другие заблочены
+
         Long sumTotal = transactionStream
                 .mapToLong(transaction -> transaction.getAccount().getBalance()).sum();
-
         System.out.println(sumTotal);
 
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-/*     // ����:
-        Stream<Transaction> transactionStream = Stream.of(transaction1, transaction2, transaction3,
-                transaction4, transaction5, transaction6, transaction7);
-
-        // TODO:: 1. ������� Map<String, Long>,
-        //  ��� String - ����� (number) ��������, Long - ����� ���������� (sum) �� ��������
-        Map<String, Long> map = transactionStream
-                .collect(Collectors.toMap(
-                        transaction -> transaction.getAccount().getNumber(),
-                        Transaction::getSum,
-                        (item1, item2) -> item1 + item2
-                ));
-        System.out.println(map);
-
-        // TODO: 2. ����� ����� ���������� �� ������� ��������
-        transactionStream = Stream.of(transaction1, transaction2, transaction3,
-                transaction4, transaction5, transaction6, transaction7);
-        double transactionsSum = transactionStream
-                .mapToLong(transaction -> transaction.getAccount().getBalance())
-                .average().orElse(0);
-        System.out.println(transactionsSum);*/

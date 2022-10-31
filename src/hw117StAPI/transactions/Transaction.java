@@ -1,16 +1,21 @@
-package ru.itmo.hw.hw17.transactions;
+package hw117StAPI.transactions;
+
+
 
 import java.util.Objects;
 
 public class Transaction {
     private String uuid;
     private long sum;
-    private Account account;
+    private  Account account;
 
     public Transaction(String uuid, long sum, Account account) {
         this.uuid = uuid;
         this.sum = sum;
         this.account = account;
+    }
+
+    public Transaction(String uuid, int sum,Account account1) {
     }
 
     public String getUuid() {
@@ -29,7 +34,7 @@ public class Transaction {
         this.sum = sum;
     }
 
-    public Account getAccount() {
+    public  Account getAccount() {
         return account;
     }
 

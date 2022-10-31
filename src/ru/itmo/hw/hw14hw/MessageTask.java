@@ -30,6 +30,10 @@ public class MessageTask {
     public static void countEachCode(List<Message> messageList) {
         // TODO: Подсчитать количество сообщений для каждого кода сообщения
         //  Ответ в консоль
+
+        HashSet<Message> studentHashSet = new HashSet<>();
+
+
     }
 
     public static void uniqueMessageCount(List<Message> messageList) {

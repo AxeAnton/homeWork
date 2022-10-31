@@ -4,7 +4,8 @@ import java.io.FilterOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
-public class EncryptedOutputStream extends FilterOutputStream { //1.базовый дикоратор FilterOutputStream для пакета IO
+public class EncryptedOutputStream extends FilterOutputStream {
+    //1.базовый дикоратор FilterOutputStream для пакета IO
     private String key;
     public EncryptedOutputStream(OutputStream out, String key) {
         super(out);

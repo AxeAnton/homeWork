@@ -1,11 +1,8 @@
-package ru.itmo.hw.hw17;
+package hw117StAPI;
 
 
 import java.util.*;
 import java.util.stream.Collectors;
-
-
-
 
 public class TopTenWords {
     public static void main(String[] args) {
@@ -25,17 +22,11 @@ public class TopTenWords {
 
         Map<Object, Long> tenTopWords = Arrays.stream(text.split(" "))
                 .collect(Collectors.groupingBy(word -> word, Collectors.counting()))
-                        .entrySet().stream().sorted(Map.Entry.<String, Long>comparingByValue().reversed()).limit(10)
+                .entrySet().stream()
+                .sorted(Map.Entry.<String, Long>comparingByValue().reversed()).limit(10)
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
         System.out.println(tenTopWords);
 
-
-
-
-
-
-
     }
-
 }
