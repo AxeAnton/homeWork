@@ -8,6 +8,7 @@ public class EchoServer {
     private int port;
     private Connection connection;
     int c = 0;
+
     public EchoServer(int port){
         this.port = port;
     }
@@ -29,15 +30,16 @@ public class EchoServer {
                     connection.sendMessage(SimpleMessage
                             .getMessage("server", "Help, Count, Ping, Exit")); // формирует свое сообщение и отправляет обратно
                 }
-/*                else if (message.getText().equalsIgnoreCase("ping")) {
+/*                if (message.getText().equalsIgnoreCase("ping")) {
                     connection.sendMessage(SimpleMessage
-                            .getMessage("server", "ping = "));
-                }
-*/
+                            .getMessage("server", "ping = " + new Client().getStr()));
+                }*/
                 else {
                     connection.sendMessage(SimpleMessage
                             .getMessage("server", "invalid order"));
                 }
+
+
 
                 //printMessage(connection.readMessage()); // серверная сторона читает сообщения от клиента
             }

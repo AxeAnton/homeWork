@@ -11,7 +11,10 @@ public class Client { // клиент первый начинает запрос
     private int port; // local.... 8090
     private String ip; // ip клиента 127.0.0.1
     private Scanner scanner;
-    private LocalDateTime  time;
+    private LocalDateTime time;
+
+    public Client() {
+    }
 
     public Client(int port, String ip) {
         this.port = port;
@@ -26,11 +29,10 @@ public class Client { // клиент первый начинает запрос
         String messageText;
 
 
-
-        while (true){ // запускается бесконечный цикл
+        while (true) { // запускается бесконечный цикл
             System.out.println("Enter a message"); // клиент просит ввести командду
             messageText = scanner.nextLine(); // сама команда
-            long start  = System.currentTimeMillis(); // FIXME время ввода сообщения
+            long start = System.currentTimeMillis(); // FIXME время ввода сообщения
             if (messageText.equalsIgnoreCase("exit")) { // выходит из
                 break;
             }
@@ -43,17 +45,19 @@ public class Client { // клиент первый начинает запрос
     }
 
     private void sendAndPrintMessage(SimpleMessage message) throws Exception {
-        try (Connection connection = new Connection(getSocket())){ // клиентская сторона устанавливает соединение по getSoket
+        try (Connection connection = new Connection(getSocket())) { // клиентская сторона устанавливает соединение по getSoket
 
-            if (message.getText().equalsIgnoreCase("ping"))
-                time = LocalDateTime.now();
+            time = LocalDateTime.now();
+
             connection.sendMessage(message); // после того как соединение установленно, клиенская сторона отправляет сообщение серверу (другой программе)
             SimpleMessage formServer = connection.readMessage(); // другая программа формирует собственное сообщение и отправляет его клиенту
 
-            if (formServer.getText().equalsIgnoreCase("ping")) {
-                String str = "ping: " + Duration.between(time, LocalDateTime.now() ); // LocalDateTime.now() // formServer.getDateTime().getNano()
-            }
-            System.out.println("answer from the server: " + formServer); // соединение разрывается
+            Duration str = Duration.between(time, LocalDateTime.now()); // LocalDateTime.now() // formServer.getDateTime().getNano()
+
+            if (message.getText().equalsIgnoreCase("ping")) {
+                System.out.println("answer from the server, ping = " + str);
+            } else System.out.println("answer from the server: " + formServer);
+
         }
     }
 
@@ -61,7 +65,6 @@ public class Client { // клиент первый начинает запрос
         Socket socket = new Socket(ip, port); // благодоря soket клиенская сторана подключается к серверу.
         return socket;
     }
-
 
 
     public static void main(String[] args) {
