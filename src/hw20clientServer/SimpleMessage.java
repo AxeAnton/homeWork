@@ -54,4 +54,3 @@ public class SimpleMessage implements Serializable {
 
 
 }
-

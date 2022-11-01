@@ -30,7 +30,7 @@ public class Client { // клиент первый начинает запрос
         while (true){ // запускается бесконечный цикл
             System.out.println("Enter a message"); // клиент просит ввести командду
             messageText = scanner.nextLine(); // сама команда
-           long start  = System.currentTimeMillis(); // FIXME время ввода сообщения
+            long start  = System.currentTimeMillis(); // FIXME время ввода сообщения
             if (messageText.equalsIgnoreCase("exit")) { // выходит из
                 break;
             }

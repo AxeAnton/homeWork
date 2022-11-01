@@ -32,7 +32,6 @@ public class EchoServer {
 /*                else if (message.getText().equalsIgnoreCase("ping")) {
                     connection.sendMessage(SimpleMessage
                             .getMessage("server", "ping = "));
-
                 }
 */
                 else {
